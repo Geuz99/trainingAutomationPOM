@@ -3,9 +3,11 @@ package com.saucedemo.main.definitions;
 import com.saucedemo.main.steps.TestReturnLoginSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import net.thucydides.core.annotations.Steps;
 
 public class TestReturnLoginDefinitions {
 
+    @Steps
     TestReturnLoginSteps testReturnLoginSteps;
 
     @Given("dar click en el boton de menu")

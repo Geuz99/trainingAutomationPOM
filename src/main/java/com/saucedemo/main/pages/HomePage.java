@@ -32,7 +32,6 @@ public class HomePage extends PageObject {
 
     public void clickFiltro() {
         filtro.click();
-
     }
 
     public void seleccionarOrdenPorPrecio() {
