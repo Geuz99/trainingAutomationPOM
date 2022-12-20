@@ -1,6 +1,7 @@
 package com.saucedemo.main.steps;
 
 import com.saucedemo.main.pages.*;
+import com.saucedemo.main.util.GeneralUtil;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.slf4j.Logger;
@@ -16,15 +17,6 @@ public class TestAddCartSteps {
     @Page
     TestCartPage cartPage;
 
-    @Page
-    TestCheckOutPage checkOutPage;
-
-    @Page
-    TestOverViewPage overViewPage;
-
-    @Page
-    TestCompletePage completePage;
-
     public void addItemToCart() {
         homePage.addItem();
     }
@@ -34,34 +26,9 @@ public class TestAddCartSteps {
     }
 
     public void validarItemOnCart(String itemName) {
+        String s = GeneralUtil.formatMessageInformation("Validando la agregacion de un item al carrito de compras");
+        LOGGER.info(s);
         MatcherAssert.assertThat("Producto en el carrito!", itemName.contains(cartPage.ItemText.getText()));
     }
 
-    public void clickBtnCheck() {
-        cartPage.clickBtnCheck();
-    }
-
-    public void validarInformation(String titleInfo) {
-        MatcherAssert.assertThat("Se realizo correctamente el paso a ingresar nuestr informacion", titleInfo.contains(checkOutPage.InfoText.getText()));
-    }
-
-    public void ingresarInformacion(String firstName, String lastName, String zip) {
-        checkOutPage.ingresarInfo(firstName, lastName, zip);
-    }
-
-    public void clickContinue() {
-        checkOutPage.clickBtnContinue();
-    }
-
-    public void validarOverView(String overView) {
-        MatcherAssert.assertThat("Se realizo correctamente el paso al overview", overView.contains(overViewPage.OverViewText.getText()));
-    }
-
-    public void clickFinish() {
-        overViewPage.clickFinish();
-    }
-
-    public void validarComplete(String complete) {
-        MatcherAssert.assertThat("Se realizo correctamente la compra", complete.contains(completePage.CompleteText.getText()));
-    }
 }

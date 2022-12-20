@@ -1,4 +1,4 @@
-Feature: iniciar sesion en la aplicacion de saucedemo
+Feature: Automatizacion de la pagina de saucedemo. se realiza esta prueba de entradas a la pagina para el mejoramiento de la pagina.
 
   @login
   Scenario: ingresar a la aplicacion con credenciales
@@ -17,8 +17,11 @@ Feature: iniciar sesion en la aplicacion de saucedemo
   Scenario: Agregar un producto al carrito
     Given Seleccione un item al carrito de compras
     When ingresamos al carrito de compras
-    And Validamos que el producto se encuentre en el carrito "Sauce Labs Onesie"
-    And dar click en el boton de check
+    Then Validamos que el producto se encuentre en el carrito "Sauce Labs Onesie"
+
+  @BuyItem
+    Scenario: Realizar la compra del item cargado al carrito de compras
+    When dar click en el boton de check
     And Validamos estar en la pagina del checkout "CHECKOUT: YOUR INFORMATION"
     And ingresamos nuestros datoe a la aplicacion "Anderson" "Zuleta" "CF"
     And dar click en el boton de continue
